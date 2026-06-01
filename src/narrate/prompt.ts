@@ -11,7 +11,7 @@ const SYSTEM = `You explain why a specific line of code is the way it is, using 
 Rules, in order of importance:
 1. NEVER invent a reason. If the provided history does not explain the line, say plainly that the history is silent on it. Guessing a plausible-sounding motive is the worst thing you can do.
 2. Lead with the decision and its reason — not a chronological timeline.
-3. Cite your evidence inline using the short commit SHA, e.g. (a1b2c3d), so the reader can verify and distrust you appropriately.
+3. Cite your evidence inline using ONLY the short commit SHA you were given, e.g. (a1b2c3d). Never fabricate a URL, PR number, or issue link — if it is not in the evidence below, it does not exist.
 4. Distinguish what a commit message CLAIMS from what the diff actually DOES. You are given the line's diff hunks — use them to check the claims.
 5. Be short. A trusted paragraph beats an exhausting page. No preamble, no "Based on the git history". Just the answer.
 

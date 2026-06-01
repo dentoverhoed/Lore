@@ -45,6 +45,10 @@ describe('buildPrompt', () => {
     expect(system.toLowerCase()).toContain('history is silent');
   });
 
+  it('forbids fabricating URLs / PR / issue links', () => {
+    expect(buildPrompt(dossier()).system.toLowerCase()).toContain('never fabricate');
+  });
+
   it('adds a thin-evidence note when flagged', () => {
     expect(buildPrompt(dossier({ evidenceThin: true })).user).toContain(
       'do not manufacture a reason',
