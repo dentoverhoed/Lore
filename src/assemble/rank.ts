@@ -27,6 +27,10 @@ const NOISE_WORDS = new Set([
   'tmp',
   'temp',
   'test',
+  'init',
+  'initial',
+  'first',
+  'commit',
 ]);
 
 /** A commit message carries little signal: only noise words and an empty body. */

@@ -66,6 +66,16 @@ describe('computeEvidenceThin', () => {
     ).toBe(true);
   });
 
+  it('is thin for the classic noise trap (init / fix / wip)', () => {
+    expect(
+      computeEvidenceThin([
+        commit({ touchedTargetLine: true, subject: 'init' }),
+        commit({ touchedTargetLine: true, subject: 'fix' }),
+        commit({ touchedTargetLine: true, subject: 'wip' }),
+      ]),
+    ).toBe(true);
+  });
+
   it('is not thin when a line-touching commit explains itself', () => {
     expect(
       computeEvidenceThin([
