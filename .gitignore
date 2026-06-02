@@ -5,4 +5,8 @@ coverage/
 .DS_Store
 .env
 .env.*
-.claude/
+
+# Ignore agent runtime junk under .claude, but keep shared skills tracked.
+.claude/*
+!.claude/skills/
+!.claude/skills/**
