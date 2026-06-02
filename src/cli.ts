@@ -3,6 +3,7 @@ import { collect } from './collect/git.js';
 import { parseTarget } from './collect/target.js';
 import { LoreError } from './errors.js';
 import { createNarrator } from './narrate/resolve.js';
+import { redactUnknownShas } from './narrate/validate.js';
 import { strings } from './strings.js';
 
 async function main(argv: string[]): Promise<number> {
@@ -39,7 +40,10 @@ async function main(argv: string[]): Promise<number> {
   const narrator = await createNarrator();
   const narrative = await narrator.narrate(dossier);
 
-  console.log(narrative);
+  const knownShas = dossier.commits.flatMap((c) => [c.sha, c.shortSha]);
+  if (dossier.introducingSha) knownShas.push(dossier.introducingSha);
+
+  console.log(redactUnknownShas(narrative, knownShas));
   console.log('');
   console.log(strings.sourcesHeader);
   for (const c of dossier.commits) {
